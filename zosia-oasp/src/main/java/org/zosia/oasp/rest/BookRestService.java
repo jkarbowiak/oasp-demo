@@ -7,6 +7,7 @@ import org.zosia.oasp.to.*;
 
 import java.util.List;
 
+@RequestMapping("/services")
 @RestController
 public class BookRestService {
 
