@@ -1,19 +1,22 @@
-package org.zosia.oasp.dao.impl;
+package org.zosia.oasp.repository.impl;
 
 import com.mysema.query.BooleanBuilder;
 import com.mysema.query.jpa.HQLTemplates;
-import com.mysema.query.jpa.JPASubQuery;
 import com.mysema.query.jpa.impl.JPAQuery;
-import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
-import org.zosia.oasp.dao.BookDao;
-import org.zosia.oasp.entity.*;
+import org.zosia.oasp.entity.BookEntity;
+import org.zosia.oasp.entity.QBookEntity;
+import org.zosia.oasp.repository.BookRepositoryCustom;
 import org.zosia.oasp.to.BookSearchCriteriaTo;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
-@Repository
-public class BookDaoImpl extends AbstractDao<BookEntity, Long> implements BookDao {
+public class BookRepositoryImpl implements BookRepositoryCustom {
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
     public List<BookEntity> findBooks(BookSearchCriteriaTo bookSearchCriteria) {

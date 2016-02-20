@@ -2,10 +2,13 @@ package org.zosia.oasp.mapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
-import org.zosia.oasp.dao.AuthorDao;
-import org.zosia.oasp.entity.*;
-import org.zosia.oasp.to.*;
+import org.zosia.oasp.entity.AuthorEntity;
+import org.zosia.oasp.entity.BookEntity;
+import org.zosia.oasp.entity.BookExemplarEntity;
+import org.zosia.oasp.repository.AuthorRepository;
+import org.zosia.oasp.to.BookExemplarTo;
+import org.zosia.oasp.to.BookTo;
+import org.zosia.oasp.to.NewBookTo;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -13,10 +16,10 @@ import java.util.stream.Collectors;
 @Component
 public class BookMapper extends AbstractMapper<BookEntity, BookTo> {
 
-    private final AuthorDao authorDao;
+    private final AuthorRepository authorDao;
 
     @Autowired
-    public BookMapper(AuthorDao authorDao) {
+    public BookMapper(AuthorRepository authorDao) {
         this.authorDao = authorDao;
     }
 
@@ -68,7 +71,7 @@ public class BookMapper extends AbstractMapper<BookEntity, BookTo> {
     }
 
     private AuthorEntity findAuthorReference(long authorId) {
-        return authorDao.getOne(authorId);
+        return authorDao.findOne(authorId);
     }
 
     private Set<BookExemplarEntity> mapBookExemplars(Set<? extends BookExemplarTo> exemplars) {
