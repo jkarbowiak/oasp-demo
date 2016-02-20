@@ -1,12 +1,14 @@
 package org.zosia.oasp.entity;
 
+import org.zosia.oasp.type.BookCover;
+import org.zosia.oasp.type.PaperSize;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "BOOK_EXEMPLAR")
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class BookExemplarEntity implements Serializable {
+public class BookExemplarEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,11 +19,17 @@ public abstract class BookExemplarEntity implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "BOOK_FK", nullable = false)
-    protected BookEntity book;
+    private BookEntity book;
 
-    @ManyToOne
-    @JoinColumn(name = "LOAN_FK", nullable = true)
-    protected LoanEntity loan;
+    private int pagesCount;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private PaperSize paperSize;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private BookCover bookCover;
 
     // for hibernate
     protected BookExemplarEntity() {
@@ -57,11 +65,27 @@ public abstract class BookExemplarEntity implements Serializable {
         this.book = book;
     }
 
-    public LoanEntity getLoan() {
-        return loan;
+    public int getPagesCount() {
+        return pagesCount;
     }
 
-    public void setLoan(LoanEntity loan) {
-        this.loan = loan;
+    public void setPagesCount(int pagesCount) {
+        this.pagesCount = pagesCount;
+    }
+
+    public PaperSize getPaperSize() {
+        return paperSize;
+    }
+
+    public void setPaperSize(PaperSize paperSize) {
+        this.paperSize = paperSize;
+    }
+
+    public BookCover getBookCover() {
+        return bookCover;
+    }
+
+    public void setBookCover(BookCover bookCover) {
+        this.bookCover = bookCover;
     }
 }

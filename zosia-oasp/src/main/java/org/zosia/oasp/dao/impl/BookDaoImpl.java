@@ -33,24 +33,6 @@ public class BookDaoImpl extends AbstractDao<BookEntity, Long> implements BookDa
                         .or(bookEntity.authors.any().personalData.lastName.startsWithIgnoreCase(author)))
                         .or(bookEntity.authors.any().nickName.startsWithIgnoreCase(author));
             }
-            if (Boolean.TRUE.equals(bookSearchCriteria.getHasSpoiler())) {
-                predicate.and(bookEntity.bookSpoiler.id.isNotNull());
-            }
-            if (Boolean.FALSE.equals(bookSearchCriteria.getHasSpoiler())) {
-                QBookSpoilerEntity bookSpoilerEntity = QBookSpoilerEntity.bookSpoilerEntity;
-                predicate.and(new JPASubQuery().from(bookSpoilerEntity).where(bookEntity.id.eq(bookSpoilerEntity.book.id)).notExists());
-            }
-            if (Boolean.TRUE.equals(bookSearchCriteria.getAvailable())) {
-                predicate.and(bookEntity.bookExemplars.any().loan.isNull());
-            }
-            if (Boolean.FALSE.equals(bookSearchCriteria.getAvailable())) {
-                QBookExemplarEntity bookExemplarEntity = QBookExemplarEntity.bookExemplarEntity;
-                QLoanEntity loanEntity = QLoanEntity.loanEntity;
-
-                predicate.and(new JPASubQuery().from(bookExemplarEntity).where(bookExemplarEntity.book.id.eq(bookEntity.id)).count().eq(
-                        new JPASubQuery().from(loanEntity).where(loanEntity.bookExemplars.any().book.id.eq(bookEntity.id)).count()
-                ));
-            }
             query.where(predicate);
         }
 

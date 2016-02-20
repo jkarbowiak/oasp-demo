@@ -51,9 +51,6 @@ public class BookMapper extends AbstractMapper<BookEntity, BookTo> {
 
         BookEntity book = new BookEntity(newBook.getTitle());
 
-        BookSpoilerEntity bookSpoiler = mapBookSpoiler(null, newBook.getSpoiler());
-        book.setBookSpoiler(bookSpoiler);
-
         Set<AuthorEntity> bookAuthors = mapAuthors(newBook.getAuthors());
         book.setAuthors(bookAuthors);
 
@@ -61,13 +58,6 @@ public class BookMapper extends AbstractMapper<BookEntity, BookTo> {
         bookExemplars.stream().forEach(book::addBookExemplar);
 
         return book;
-    }
-
-    private BookSpoilerEntity mapBookSpoiler(Long id, String content) {
-        if (id != null || !StringUtils.isEmpty(content)) {
-            return new BookSpoilerEntity(id, content);
-        }
-        return null;
     }
 
     private Set<AuthorEntity> mapAuthors(Collection<Long> authorIds) {
@@ -89,21 +79,9 @@ public class BookMapper extends AbstractMapper<BookEntity, BookTo> {
     }
 
     private BookExemplarEntity mapBookExemplar(BookExemplarTo bookExemplarTo) {
-        if (bookExemplarTo instanceof PaperBookExemplarTo) {
-            return mapPaperBookExemplarTo((PaperBookExemplarTo) bookExemplarTo);
-        }
-        else if (bookExemplarTo instanceof AudioBookExemplarTo) {
-            return mapAudioBookExemplarTo((AudioBookExemplarTo) bookExemplarTo);
-        }
-        return null;
-    }
-
-    private PaperBookExemplarEntity mapPaperBookExemplarTo(PaperBookExemplarTo bookExemplarTo) {
-        return new PaperBookExemplarEntity(bookExemplarTo.getId(), bookExemplarTo.getSerialNumber(),
-                bookExemplarTo.getPagesCount(), bookExemplarTo.getPaperSize(), bookExemplarTo.getBookCover());
-    }
-
-    private AudioBookExemplarEntity mapAudioBookExemplarTo(AudioBookExemplarTo bookExemplarTo) {
-        return new AudioBookExemplarEntity(bookExemplarTo.getId(), bookExemplarTo.getSerialNumber(), bookExemplarTo.getFormat());
+        BookExemplarEntity bookExemplarEntity = new BookExemplarEntity(bookExemplarTo.getId(), bookExemplarTo.getSerialNumber());
+        bookExemplarEntity.setPaperSize(bookExemplarTo.getPaperSize());
+        bookExemplarEntity.setPagesCount(bookExemplarTo.getPagesCount());
+        return bookExemplarEntity;
     }
 }

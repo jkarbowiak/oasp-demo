@@ -25,9 +25,6 @@ public class BookEntity implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "AUTHOR_ID", nullable = false, updatable = false)})
     private Set<AuthorEntity> authors = new HashSet<>();
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "book")
-    private BookSpoilerEntity bookSpoiler;
-
     @Version
     private long version;
 
@@ -64,17 +61,6 @@ public class BookEntity implements Serializable {
         return bookExemplars;
     }
 
-    public BookSpoilerEntity getBookSpoiler() {
-        return bookSpoiler;
-    }
-
-    public void setBookSpoiler(BookSpoilerEntity bookSpoiler) {
-        if (bookSpoiler != null) {
-            bookSpoiler.setBook(this);
-        }
-        this.bookSpoiler = bookSpoiler;
-    }
-
     public void addBookExemplar(BookExemplarEntity bookExemplar) {
         bookExemplar.setBook(this);
         bookExemplars.add(bookExemplar);
@@ -87,4 +73,5 @@ public class BookEntity implements Serializable {
     public void setVersion(long version) {
         this.version = version;
     }
+
 }

@@ -1,5 +1,6 @@
 package org.zosia.oasp.entity;
 
+import org.zosia.oasp.type.LiteraryGenre;
 import org.zosia.oasp.type.PersonalData;
 
 import javax.persistence.*;
@@ -7,38 +8,40 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "AUTHOR")
-@DiscriminatorColumn(name = "TYPE", length = 6, discriminatorType = DiscriminatorType.STRING)
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public abstract class AuthorEntity implements Serializable {
+public class AuthorEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    protected Long id;
+    private Long id;
 
     @Column(nullable = true, length = 30)
-    protected String nickName;
+    private String nickName;
 
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "firstName", column = @Column(name = "FIRST_NAME", nullable = false)),
             @AttributeOverride(name = "lastName", column = @Column(name = "LAST_NAME", nullable = false))})
-    protected PersonalData personalData;
+    private PersonalData personalData;
+
+    @Enumerated(EnumType.STRING)
+    private LiteraryGenre literaryGenre;
 
     @Version
-    protected long version;
+    private long version;
 
     // for hibernate
     protected AuthorEntity() {
 
     }
 
-    protected AuthorEntity(PersonalData personalData, String nickName) {
+    public AuthorEntity(PersonalData personalData, String nickName) {
         this.personalData = personalData;
         this.nickName = nickName;
     }
 
-    protected AuthorEntity(Long id, PersonalData personalData, String nickName, long version) {
+    public AuthorEntity(Long id, PersonalData personalData, String nickName, LiteraryGenre literaryGenre, long version) {
         this(personalData, nickName);
+        this.literaryGenre = literaryGenre;
         this.id = id;
         this.version = version;
     }
@@ -53,6 +56,14 @@ public abstract class AuthorEntity implements Serializable {
 
     public String getNickName() {
         return nickName;
+    }
+
+    public LiteraryGenre getLiteraryGenre() {
+        return literaryGenre;
+    }
+
+    public void setLiteraryGenre(LiteraryGenre literaryGenre) {
+        this.literaryGenre = literaryGenre;
     }
 
     public long getVersion() {

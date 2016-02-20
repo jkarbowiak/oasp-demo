@@ -1,15 +1,17 @@
 package org.zosia.oasp.to;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import org.zosia.oasp.type.LiteraryGenre;
 import org.zosia.oasp.type.PersonalData;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@class")
-public abstract class AuthorTo {
+public class AuthorTo {
 
-    protected Long id;
+    private Long id;
     private String nickName;
-    protected PersonalData personalData;
+    private PersonalData personalData;
     private long version;
+    private LiteraryGenre genre;
 
     public Long getId() {
         return id;
@@ -35,6 +37,14 @@ public abstract class AuthorTo {
         this.personalData = personalData;
     }
 
+    public LiteraryGenre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(LiteraryGenre genre) {
+        this.genre = genre;
+    }
+
     public long getVersion() {
         return version;
     }
@@ -42,4 +52,5 @@ public abstract class AuthorTo {
     public void setVersion(long version) {
         this.version = version;
     }
+
 }
