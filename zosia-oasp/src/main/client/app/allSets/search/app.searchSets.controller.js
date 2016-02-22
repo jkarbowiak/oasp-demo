@@ -19,6 +19,17 @@ angular.module('app.allSets').controller('SearchForSetCntl', function($scope, $h
         });
     };
 
+        $scope.markSetAsWanted = function (data) {
+            $http({
+                method: 'POST',
+                url: currentContextPath.get() + 'services/sets/wanted/add',
+                data: {
+                    setNumber: data[0].set_id,
+                    wanted: true
+                }
+            });
+        };
+
     $scope.displaySetParts = function(setID){
         $location.path("/allSets/searchParts").search({set_id: setID});
     };
@@ -28,14 +39,15 @@ angular.module('app.allSets').controller('SearchForSetCntl', function($scope, $h
     };
 
     $scope.markWanted = function(setID){
-        $location.path("/allSets/searchParts").search({set_id: setID});
+        var wantedItem = $scope.searchResults.filter(function(x) { return x['set_id'] === setID;} );
+        $scope.markSetAsWanted(wantedItem);
     };
 
     var loadFromUrlParam = function () {
         if (angular.isDefined($location.search().query)) {
             $scope.model.query = $location.search().query;
+            $scope.searchForLegoSet();
         }
-        $scope.searchForLegoSet();
     };
 
     loadFromUrlParam();

@@ -12,6 +12,8 @@ public interface SetService {
 
     Collection<SetTo> findWantedSets();
 
+    void addWantedSet(WantedSetTo setTo);
+
     /*List<BookTo> findBooks(BookSearchCriteriaTo searchCriteria);
 
     BookTo createBook(NewBookTo bookToSave);

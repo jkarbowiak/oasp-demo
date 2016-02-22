@@ -24,6 +24,12 @@ public class SetRestService {
         return setService.findOwnedSets();
     }
 
+    @RequestMapping(value = "/sets/wanted/add", method = RequestMethod.POST)
+    @ResponseBody
+    public void addWantedSet(@RequestBody WantedSetTo wantedSetTo) {
+        setService.addWantedSet(wantedSetTo);
+    }
+
     @RequestMapping(value = "/sets/wanted", method = RequestMethod.GET)
     @ResponseBody
     public Collection<SetTo> findWantedSets() {

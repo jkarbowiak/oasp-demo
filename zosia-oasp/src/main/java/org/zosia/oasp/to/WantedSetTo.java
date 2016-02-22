@@ -1,31 +1,15 @@
 package org.zosia.oasp.to;
 
 
-import org.zosia.oasp.type.BookCover;
-import org.zosia.oasp.type.PaperSize;
-
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-public class SetTo {
+public class WantedSetTo {
     private long id;
     private String setNumber;
     private boolean wanted;
     private boolean owned;
     private long version;
-    private Set<SetPiecesTo> setPieces = new HashSet<>();
-
-    public SetTo() {
-
-    }
-
-    public SetTo(WantedSetTo setTo) {
-        setNumber = setTo.getSetNumber();
-        wanted = setTo.isWanted();
-        owned = setTo.isOwned();
-    }
 
     public boolean isWanted() {
         return wanted;
@@ -65,14 +49,6 @@ public class SetTo {
 
     public void setVersion(long version) {
         this.version = version;
-    }
-
-    public Set<SetPiecesTo> getSetPieces() {
-        return setPieces;
-    }
-
-    public void setSetPieces(Set<SetPiecesTo> setPieces) {
-        this.setPieces = setPieces;
     }
 
 }

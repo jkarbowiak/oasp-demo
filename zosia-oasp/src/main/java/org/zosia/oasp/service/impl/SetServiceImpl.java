@@ -3,11 +3,13 @@ package org.zosia.oasp.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.zosia.oasp.entity.SetEntity;
 import org.zosia.oasp.mapper.SetMapper;
 import org.zosia.oasp.repository.SetRepository;
 import org.zosia.oasp.service.SetService;
 import org.zosia.oasp.to.PieceTo;
 import org.zosia.oasp.to.SetTo;
+import org.zosia.oasp.to.WantedSetTo;
 
 import java.util.Collection;
 
@@ -15,23 +17,30 @@ import java.util.Collection;
 @Transactional(readOnly = true)
 public class SetServiceImpl implements SetService {
 
-    private final SetMapper bookMapper;
-    private final SetRepository bookRepository;
+    private final SetMapper setMapper;
+    private final SetRepository setRepository;
 
     @Autowired
     public SetServiceImpl(SetMapper setMapper, SetRepository bookRepository) {
-        this.bookMapper = setMapper;
-        this.bookRepository = bookRepository;
+        this.setMapper = setMapper;
+        this.setRepository = bookRepository;
     }
 
     @Override
     public Collection<SetTo> findOwnedSets() {
-        return bookMapper.mapSourceCollectionRoot(bookRepository.findOwnedSets());
+        return setMapper.mapSourceCollectionRoot(setRepository.findOwnedSets());
     }
 
     @Override
     public Collection<SetTo> findWantedSets() {
-        return bookMapper.mapSourceCollectionRoot(bookRepository.findWantedSets());
+        return setMapper.mapSourceCollectionRoot(setRepository.findWantedSets());
+    }
+
+    @Override
+    public void addWantedSet(WantedSetTo setTo) {
+        SetEntity setEntity = setMapper.mapTarget(new SetTo(setTo));
+
+        setRepository.save(setEntity);
     }
 
     /*@Override
