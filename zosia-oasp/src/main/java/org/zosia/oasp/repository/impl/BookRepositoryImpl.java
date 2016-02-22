@@ -4,18 +4,16 @@ import com.mysema.query.BooleanBuilder;
 import com.mysema.query.jpa.HQLTemplates;
 import com.mysema.query.jpa.impl.JPAQuery;
 import org.springframework.util.StringUtils;
-import org.zosia.oasp.entity.BookEntity;
-import org.zosia.oasp.entity.QBookEntity;
-import org.zosia.oasp.repository.BookRepositoryCustom;
-import org.zosia.oasp.to.BookSearchCriteriaTo;
+
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-public class BookRepositoryImpl implements BookRepositoryCustom {
+public class BookRepositoryImpl /*implements BookRepositoryCustom*/ {
 
-    @PersistenceContext
+    /*@PersistenceContext
     private EntityManager entityManager;
 
     @Override
@@ -40,5 +38,5 @@ public class BookRepositoryImpl implements BookRepositoryCustom {
         }
 
         return query.listResults(bookEntity).getResults();
-    }
+    }*/
 }

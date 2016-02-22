@@ -13,7 +13,7 @@
         <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="S" data-ng-model="model.type"> Set
     </label>
     <label class="radio-inline">
-        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="M" data-ng-model="model.type"> MOC
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="M" data-ng-model="model.type"> My Own Construction
     </label>
     <br>
     <button type="button" data-ng-click="searchForLegoSet()">Go!</button>
@@ -41,10 +41,12 @@
             <td>{{item.year}}</td>
             <td class="centered-buttons">
                 <button type="button"
-                        class="btn btn-primary">Mark Set as Owned</button>
+                        class="btn btn-primary"
+                        data-ng-click="markOwned(item.set_id)">Mark Set as Owned</button>
                 <br>
                 <button type="button"
-                        class="btn btn-primary">Add to Wanted Items</button>
+                        class="btn btn-primary"
+                        data-ng-click="markWanted(item.set_id)">Add to Wanted Items</button>
                 <br>
                 <button type="button"
                         class="btn btn-info"

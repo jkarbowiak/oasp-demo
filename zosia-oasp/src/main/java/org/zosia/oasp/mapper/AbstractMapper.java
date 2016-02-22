@@ -7,10 +7,16 @@ public abstract class AbstractMapper<S, T> {
 
     public abstract T mapSource(S source);
 
+    public abstract T mapSourceRoot(S source);
+
     public abstract S mapTarget(T target);
 
     public Collection<T> mapSourceCollection(Collection<S> collection) {
         return collection.stream().map(this::mapSource).collect(Collectors.toList());
+    }
+
+    public Collection<T> mapSourceCollectionRoot(Collection<S> collection) {
+        return collection.stream().map(this::mapSourceRoot).collect(Collectors.toList());
     }
 
     public Collection<S> mapTargetCollection(Collection<T> collection) {
