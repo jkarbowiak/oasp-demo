@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 public class SetTo {
-    private long id;
+    private Long id;
     private String setNumber;
     private boolean wanted;
     private boolean owned;

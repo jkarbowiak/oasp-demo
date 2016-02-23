@@ -32,11 +32,15 @@ public class SetEntity implements Serializable {
     protected SetEntity() {
     }
 
-    public SetEntity(long id, String setNumber, long wanted, long owned) {
+    public SetEntity(Long id, String setNumber, long wanted, long owned) {
         this.id = id;
         this.setNumber = setNumber;
         this.wanted = wanted;
         this.owned = owned;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getId() {

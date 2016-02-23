@@ -14,7 +14,6 @@ import org.zosia.oasp.to.WantedSetTo;
 import java.util.Collection;
 
 @Service
-@Transactional(readOnly = true)
 public class SetServiceImpl implements SetService {
 
     private final SetMapper setMapper;
@@ -27,16 +26,19 @@ public class SetServiceImpl implements SetService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Collection<SetTo> findOwnedSets() {
         return setMapper.mapSourceCollectionRoot(setRepository.findOwnedSets());
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Collection<SetTo> findWantedSets() {
         return setMapper.mapSourceCollectionRoot(setRepository.findWantedSets());
     }
 
     @Override
+    @Transactional(readOnly = false)
     public void addWantedSet(WantedSetTo setTo) {
         SetEntity setEntity = setMapper.mapTarget(new SetTo(setTo));
 
