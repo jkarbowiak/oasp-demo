@@ -33,37 +33,4 @@ public class PieceServiceImpl implements PieceService {
     public Collection<PieceTo> findOwnedPieces() {
         return pieceMapper.mapSourceCollectionRoot(Lists.newArrayList(pieceRepository.findAll()));
     }
-
-    /*@Override
-    public List<BookTo> findBooks(BookSearchCriteriaTo searchCriteria) {
-        List<BookEntity> books = bookRepository.findBooks(searchCriteria);
-        return new ArrayList<>(bookMapper.mapSourceCollection(books));
-    }
-
-    @Override
-    @Transactional(readOnly = false)
-    public BookTo createBook(NewBookTo bookToSave) {
-        BookEntity bookEntity = bookMapper.mapNewBook(bookToSave);
-        bookEntity = bookRepository.save(bookEntity);
-        return bookMapper.mapSource(bookEntity);
-    }
-
-    @Override
-    @Transactional(readOnly = false)
-    public BookTo updateBook(BookTo bookTo) {
-        BookEntity bookEntity = bookMapper.mapTarget(bookTo);
-        BookEntity savedBookEntity = bookRepository.save(bookEntity);
-        return bookMapper.mapSource(savedBookEntity);
-    }
-
-    @Override
-    public List<BookExemplarTo> findBookExemplars(long bookId) {
-        return new ArrayList<>(bookExemplarMapper.mapSourceCollection(bookExemplarRepository.findAllBookExemplars(bookId)));
-    }
-
-    @Override
-    @Transactional(readOnly = false)
-    public void removeBookById(long bookIdToRemove) {
-        bookRepository.delete(bookIdToRemove);
-    }*/
 }

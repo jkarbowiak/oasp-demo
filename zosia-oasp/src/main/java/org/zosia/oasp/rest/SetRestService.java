@@ -3,7 +3,8 @@ package org.zosia.oasp.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.zosia.oasp.service.SetService;
-import org.zosia.oasp.to.*;
+import org.zosia.oasp.to.SetTo;
+import org.zosia.oasp.to.WantedSetTo;
 
 import java.util.Collection;
 
@@ -35,11 +36,4 @@ public class SetRestService {
     public Collection<SetTo> findWantedSets() {
         return setService.findWantedSets();
     }
-
-/*    @RequestMapping(value = "/book", method = RequestMethod.POST)
-    @ResponseBody
-    public BookTo createBook(@RequestBody NewBookTo bookToSave) {
-        return bookService.createBook(bookToSave);
-    }*/
-
 }
