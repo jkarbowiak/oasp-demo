@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.zosia.oasp</groupId>
-	<artifactId>zosia-oasp</artifactId>
+	<groupId>org.oasp.demo</groupId>
+	<artifactId>oasp-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>zosia-oasp</name>
-	<description>Demo project for Spring Boot</description>
+	<name>oasp-demo</name>
+	<description>Demo project for OASP Spring Boot Backend</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
