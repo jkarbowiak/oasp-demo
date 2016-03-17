@@ -6,7 +6,7 @@
 
 		<title>Jak szybko i łatwo zaliczyć projekt z Web-ówki</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="description" content="Przykładowa aplikacja bazująca na platformie OASP">
 		<meta name="author" content="Adam Puchalski & Jakub Karbowiak">
 
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -161,12 +161,12 @@
 				<section>
 					<h1>OASP</h1>
 					<ul>
-						<li class="fragment">JAVA + JS</li>
-						<li class="fragment">Platforma do rozwijania aplikacji webowych</li>
-						<li class="fragment">Referencyjna implementacja projektu</li>
-						<li class="fragment">Single Page Application</li>
-						<li class="fragment">Kompozycja frameworków</li>
-						<li class="fragment">IDE</li>
+						<li>JAVA + JS</li>
+						<li>Platforma do rozwijania aplikacji webowych</li>
+						<li>Referencyjna implementacja projektu</li>
+						<li>Single Page Application</li>
+						<li>Kompozycja frameworków</li>
+						<li>IDE</li>
 					</ul>
 				</section>
 				
@@ -184,33 +184,40 @@
 						<h1>Backend</h1>
 						<img data-src="images/backend.png" alt="Backend"/>
 					</section>
-					<section tagcloud>
-						Java
-						Tomcat
-						Spring Framework
-						Spring Boot
-						Hibernate
-						Apache CXF
+					<section>
+						<h2>Backend</h2>
+						<ul>
+							<li>Java</li>
+							<li>Tomcat</li>
+							<li>Spring Framework</li>
+							<li>Spring Boot</li>
+							<li>Hibernate</li>
+							<li>Apache CXF</li>
+							<li>Maven</li>
+						</ul>
 					</section>
 					<section>
 						<h1>Frontend</h1>
 						<img data-src="images/frontend.png" alt="Frontend"/>
 					</section>
-					<section tagcloud>
-						Bower
-						Gulp
-						Npm
-						Angular JS
-						Javascript (aka vanila js)
-						Bootstrap
-						Css
-						Less
-						Karma
-						Maven
-						Html
-						Node JS
-						Jasmine
-						Yoeman
+					<section>
+						<h2>Frontend</h2>
+						<ul>
+							<li>Bower</li>
+							<li>Gulp</li>
+							<li>npm</li>
+							<li>Angular JS</li>
+							<li>Javascript (aka vanila js)</li>
+							<li>Bootstrap</li>
+							<li>CSS</li>
+							<li>LESS</li>
+							<li>Karma</li>
+							<li>HTML 5</li>
+							<li>Node JS</li>
+							<li>Jasmine</li>
+							<li>Yoeman</li>
+						<ul>
+						
 					</section>
 					<section>
 						<h2>Komunikacja między frontendem i backendem</h2>
@@ -227,7 +234,16 @@
 					<section>
 						<h1>Backend</h1>
 						<h3 class="fragment" style="text-transform: none">http://start.spring.io</h3>
-						<h3 class="fragment" style="text-transform: none">public static void main</h3>
+						<pre class="fragment"><code data-trim data-noescape>
+@SpringBootApplication
+public class OaspDemoApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(OaspDemoApplication.class, args);
+	}
+}
+						</code></pre>
+						
 					</section>
 					
 					<section>
@@ -235,19 +251,70 @@
 						<h3 class="fragment" style="text-transform: none">npm install -g yo</h3>
 						<h3 class="fragment" style="text-transform: none">npm install -g generator-oasp</h3>
 						<h3 class="fragment" style="text-transform: none">yo oasp</h3>
+						<h3 class="fragment" style="text-transform: none">gulp serve</h3>
 					</section>
 				
 				</section>
 				
 				<section>
 					<h2 style="text-transform: none">http://www.capgeminisoftware.pl/</h2>
+					<img style="max-height: 300px" data-src="images/capgemini.jpg" alt="Capgemini"/>
 				</section>
 				
 				<section>
-					<h1>IT Survival</h1>
-					<img data-src="images/it_survival.jpg" alt="IT Survival"/>
+				
+					<section>
+						<h1>IT Survival</h1>
+						<img data-src="images/it_survival.jpg" alt="IT Survival"/>
+					</section>
+					
+					<section>
+						<h1>IT Survival</h1>
+						<ul>
+							<li><b>za darmo!</b></li>
+							<li>3 dni (22-24 kwietnia)</li>
+							<li>wykłady + warsztaty</li>
+							<li>dotadkowe atrakcje</li>
+							<li>Java</li>
+							<li>Angular JS</li>
+							<li>IoT</li>
+							<li><b>zgłoszenia do końca tygodnia (do 20 marca)</b></li>
+							<li>http://www.capgeminisoftware.pl/</li>
+						</ul>
+					</section>
+				
 				</section>
-
+				
+				<section>
+					<section>
+						<h1>Akcja relokacja</h1>
+						<img data-src="images/akcja_relokacja.jpg" alt="IT Survival"/>
+					</section>
+					
+					<section>
+						<h1>Akcja relokacja</h1>
+						<ul>
+							<li><b> 10 000 zł brutto</b></li>
+							<li>Dla osób, które wcześniej pracowały lub <b>studiowały.</b></li>
+							<li>Studia dzienne.</li>
+							<li>Uczelnia poza województwem dolnośląskim/wielkopolskim lub w województwie dolnośląskim/wielkopolskim, ale w odległości nie mniejszej niż 70 km od biura Capgemini (odległość mierzona w linii prostej).</li>
+							<li>Okres pomiędzy zakończeniem studiów a podjęciem pracy w Capgemini nie może być dłuższy niż 4 miesiące.</li>
+						</ul>
+					</section>
+				</section>
+				
+				<section>
+					<h1>Aktualne oferty</h1>
+					<ul>
+						<li>praktykant/praktykantka (profil programistyczny)</li>
+						<li>praktykant (wsparcie klienta niemiecko- i anglojęzycznego)</li>
+						<li>inżynier oprogramowania JAVA (z podstawową znajomością języka niemieckiego)</li>
+						<li>inżynier oprogramowania .NET (ze znajomością języka angielskiego)</li>
+						<li>web developer</li>
+						<li>http://www.capgeminisoftware.pl/</li>
+					</ul>
+				</section>
+				
 			</div>
 
 		</div>
